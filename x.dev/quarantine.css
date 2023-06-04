@@ -1,0 +1,86 @@
+:root {
+	--column: 15rem;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body:after {
+	content: "";
+	font-size: 1em;
+	padding: var(--Row);
+	position: fixed;
+	inset: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(var(--column), 1fr));
+	gap: var(--Row);
+}
+
+body {
+	/* display: grid; */
+	/* grid-template-columns: repeat(auto-fill, minmax(var(--column), 1fr)); */
+	/* grid-auto-flow: dense; */
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--Row);
+	padding: var(--Row);
+}
+
+body>* {
+	flex-grow: 1;
+	flex-shrink: 1;
+	box-sizing: border-box;
+}
+
+
+
+nav {
+	order: -1;
+	flex-basis: 100%;
+	min-height: calc(var(--Row) * 2);
+}
+
+nav, footer {
+	grid-column: 1 / -1;
+}
+
+footer {
+	flex-basis: 100%;
+}
+
+main {
+	flex-basis: calc(var(--column) * 2);
+	/* flex-grow: 3; */
+	grid-column: span 2;
+}
+
+aside {
+	flex-basis: calc(var(--column) * 1);
+
+	/* grid-row: 3 / -1; */
+}
+
+header {
+	flex-basis: calc(var(--column) * 1);
+}
+
+div {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(var(--column), 1fr));
+	gap: var(--Row);
+	/* grid-column: 1 / -1; */
+}
+
+:where(body, body>div)>:where(header, nav, article, main, section, aside, footer) {
+	background-color: lightgrey;
+	min-height: calc(var(--Row) * 5);
+	padding: calc(var(--Row) / 2);
+}
+
+:not(p, span, strong, em)>a {
+	text-decoration: none;
+}
+
+

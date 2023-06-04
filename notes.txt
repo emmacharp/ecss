@@ -1,0 +1,117 @@
+# ECSS
+
+## why ?
+
+Because vanilla CSS is misunderstood and undeservedly maligned. Because simple rules and tools can go a long way in making sure the CSS codebase is light, simple and scalable. ECSS is a global approach to producing efficient design systems.
+
+## principles
+- CSS is a designing language, not a programming one.
+- Empowering designers to refine their work right in the browser is efficient. So CSS should be intelligible design-wise.
+- not all properties are equal. display, position and the box-model properties are potentially way more damaging than type properties.
+- components and patterns need structure and should prescribe it. in context documentation is key.
+- selectors should reflect intentions and be devoid of unnecessary particles. looking at you Mr Wathan.
+- selector types should depend on function. no absolute rule should be edicted.
+- specificity and selection should be harnessed, not rejected.
+- specificity should be kept as low as possible. but not lower.
+- design has a layered approach to graphical communication. CSS should too.
+- global scope in CSS is not a sin. it represents design layered approach. not programming best practices.
+- far-reaching global rules must be light and largely anonymous with a few rules per rulesets only.
+- one should wait until a concept is clear before naming it. HTML elements should be used until naming is necessary.
+- when more than 4 properties are repeated through multiple rulesets, a concept must be emerging. one should centralize rules by naming this concept.
+- one should not use named concepts inside other named concepts. if it is necessary, the child concept must be scoped to the parent concept.
+- tinkering with named concepts through files is absolutely prohibited. all rules for a named concept must reside in the same, unique CSS file.
+- namespaced state/structural classes should be used for necessary child concepts inside parent concepts.
+- one should only serve used CSS rules. other than the theme layer, minifying & bundling is discouraged. concepts should include their CSS rules at render.
+- future-proofing is economically profitable. one should capitalize on emerging technologies and freely available tools.
+- one should make full use of development tools by going with the grain of the platform. by using just-in-time rules, the cascade and rational selection, the debugging workflow is empowered.
+- minimizing use of technological abstractions and high-level frameworks incites lighter, simpler code. by writing css, one uses css better. by writing HTML, one writes HTML better.
+- using as much of the web platform as possible is a sane, future-proof and efficient way of developing web platforms.
+- one cannot always come up with the best way to select or the right intention at first. a code quarantine should then be temporarily used.
+- Any published code should be exempt from quarantine.
+- Any HTML element should endorse one role only. Semantic tags are for content semantics, divs are for graphical structure.
+- Compositional and presentional grids should be implemented with divs.
+- Structural or state styling should be implemented in conjunction with specificity reducing pseudo-classes (ie. :where())
+- Whole stylesheets should be global. Media queries scopes should be used in the HTML for reuse and optimization concerns.
+- Each layer should be autonomous, independent and removable.
+- Reduce served unused CSS by shipping it only live components.
+- Selectors and Units can convey information and one should make full use of their expressiveness (ie: ch units for text widths, px units for images, rem for vertical rhythm, etc.).
+
+## Advantages
+No build steps
+
+Layers
+layers represent design dimensions. they provide a robust way of managing specificity through these.
+
+general
+    (elements only, low level rules. should keep under 3 light properties per ruleset. behavioral baseline. immutable — or versioned)
+theme
+    (elements with possible mirroring classes. light and medium properties only. stylistic baseline. can add, careful when removing. should be swappable.)
+    language (all design tokens, custom properties only.)
+    scheme(s) (color palette variants. ie : light, dark, high-contrast, etc.)
+    typography (type only, max-width & min-width in ch for each typographic element)
+    rhythm (neighboring content selectors with margin-top only)
+    colors (color, border-color, background-color & padding only)
+regions*
+    (high level, scoped but unique elements with far reaching rules and typed content. usually children of body or some master-container. could be identified with id attribute selectors.)
+    nav.css
+    header.css*
+    aside.css
+    main.css
+    footer.css
+components
+    (scoped, content-relative and mutable named conceptual entities. position: relative only. no margins. selectors always begin with filename)
+    hero.css
+    card.css
+    chip.css
+    dropdown.css
+    figure.css
+patterns
+    (structural rules, over multiple possibly unnamed elements. larger span, may not be scoped)
+    adaptation
+        pile-to-sidebar.css
+        modal-to-horizontal.css
+    composition
+        aside-and-main.css
+        sliding-panel.css
+        modal-panel.css
+utilities
+    (scoped, content-agnostic, themeless, and configurable but immutable — or versioned — conceptual entities)
+    grid.css
+    accordion.css
+    drawer.css
+    slider.css
+    gallery.css
+functional
+    (atomic : one rule, one class. can add, should not remove without tool. should be limited to heavily and arbitrarily used rules)
+    atomic.css
+exceptions
+    (dead ends and wild selectors. the less, the better. but, you know, life is messy)
+
+States
+    (namespaced and togglable. javascript should be using them)
+    .is-* (qualifying, combinatory variant class. may use any property. be careful with heavy ones)
+        is-small
+        is-big
+        is-secondary
+        is-right-sided
+    [data-is=*] (javascript states should be using data attributes. it's cleaner, easier to parse and clearly scoped)
+        [data-is-active]
+        [data-is-visible]
+        [data-is-hidden]
+
+Definitions
+
+conceptual entities : any named graphical or structural concepts. heavily influenced by design.
+light properties : typography, colors, opacity...
+medium properties : padding, margin, border,
+heavy properties : display, position, height, width...
+concept : a component, utility or pattern. any entity with a name.
+
+Tools
+
+Browser devtools
+Stylelint
+    for testing principles. warnings and errors.
+Purify CSS
+CSSCSS
+PostCSS

@@ -1,0 +1,22 @@
+/* Rythme des contenus ----------------------- */
+
+:not(:where(html, body, label, ul, ol, p, a, span))>:not(:where(link))+* {
+	margin-top: var(--Row);
+}
+
+:is(h1, h2, h3, h4, h5, h6)+:is(h1, h2, h3, h4, h5, h6) {
+	margin-top: calc(var(--Row) / 2);
+
+*+li {
+	margin-top: calc(var(--Row) / 4);
+}
+
+/* *+:is(a, button) */
+
+/* *+is(input, select, textarea) */
+
+/* Rythme de base des conteneurs */
+
+/* :is(article, section, aside, div, details, header, footer)+* { */
+/* 	margin-top: calc(var(--Row) * 3)} */
+

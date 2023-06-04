@@ -1,0 +1,67 @@
+/* Styles génériques de base ----------------------- */
+/* Ne doit contenir que des sélecteurs de balise. Aucune classe n'est acceptée.
+	Ne doit pas changer de projet en projet. Évolue en versions */
+
+/* @layer general { */
+	/* Enlever toutes marges */
+	* { padding: 0; margin: 0; }
+
+	/* Forcer tous les éléments, dont les contrôles
+	 * à respecter les polices de caractères par défaut. */
+	* { font-family: inherit; }
+
+	/* Assurer qu'elles ne soient pas présentées 
+	 * lorsqu'intégrées au contenu */
+	link { display: none; }
+
+
+	/* Restreindre les images aux dimensions
+	de leur parent. Éviter l'espace de 
+	la hauteur de ligne (inline vs. block) */
+	img {
+		max-width: 100%;
+		display: block;
+		object-fit: cover; }
+
+	/* Garder la puce à l'intérieur 
+	de la colonne de texte */
+	ul, ol { padding-left: 1.1em; }
+
+	/* Meilleur affichage typographique */	
+	html { text-rendering: geometricPrecision; }
+
+	/* Interlignage raffiné */
+	html { line-height: 1.4; }
+	h1, h2, h3, h4, h5, h6 { line-height: 1.1; }
+
+	/* Style graphique préférable à celui du navigateur */
+	hr {
+		line-height: 0;
+		height: 0;
+		border: none; border-top: 1px solid currentColor;
+	}
+
+	/* Préparer les <symbol> à être manipulés */
+	use, svg, path { fill: inherit; }
+
+	/* Icônes intégrés dans le texte */
+	i>svg {
+		height: 1.1ch;
+		margin-left: .5em; margin-right: .5em;
+		display: inline-block;
+	}
+
+	/* Styles d'emphase */
+	p>em { font-style: italic; }
+
+	/* Largeur maximale générique 
+	 * pour quelconque paragraphe */
+	p { max-width: 75ch; min-width: 20ch; }
+
+	/* Désactiver le délai sur iOS 
+	 * lorsqu'on tape sur un élément */
+	@media (hover:none) {
+		html { touch-action: manipulation; }
+	}
+
+/* } */

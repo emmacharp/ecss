@@ -1,0 +1,26 @@
+/* Adaptation de la typographie ----------------------- */
+
+	@media (max-width: 60em) { :root { --Scale: var(--MinorThird); } }
+	@media (min-width: 60em) { :root { --Scale: var(--PerfectFourth); } }
+
+
+/* Typographie basée sur les polices système ----------------------- */
+
+	:root { font-family: var(--BaseFontStack, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"); }
+
+
+/* Distribution aux titres de l'échelle typographique ----------------------- */
+
+	h1, .h1 { --ScaleLevel: var(--Huger); --FontWeight: 800; }
+	h2, .h2 { --ScaleLevel: var(--Huge); --FontWeight: 600; }
+	h3, .h3 { --ScaleLevel: var(--Huge); }
+	h4, .h4 { --ScaleLevel: var(--Base); --FontWeight: 500; --LineHeightFactor: .75; }
+	h5, .h5 { --ScaleLevel: var(--Base); --LineHeightFactor: .75; }
+	h6, .h6 { --ScaleLevel: var(--Short); --LineHeightFactor: .75; }
+
+/* Distribution des graisses de base ----------------------- */ 
+
+	b { --FontWeight: 500; }
+	p, ul { --FontWeight: 300; }
+
+
